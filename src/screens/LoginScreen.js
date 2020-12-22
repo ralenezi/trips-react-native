@@ -10,6 +10,7 @@ import BackButton from '../components/BackButton'
 import { theme } from '../core/theme'
 import { emailValidator } from '../helpers/emailValidator'
 import { passwordValidator } from '../helpers/passwordValidator'
+import { Avatar } from 'react-native-paper'
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState({ value: '', error: '' })
@@ -32,23 +33,24 @@ const LoginScreen = ({ navigation }) => {
   return (
     <Background>
       <BackButton goBack={navigation.goBack} />
-      <Logo />
+      {/* <Logo /> */}
+      <Avatar.Icon size={124} icon='account-circle-outline' />
       <Header>Welcome back.</Header>
       <TextInput
-        label="Email"
-        returnKeyType="next"
+        label='Email'
+        returnKeyType='next'
         value={email.value}
         onChangeText={(text) => setEmail({ value: text, error: '' })}
         error={!!email.error}
         errorText={email.error}
-        autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
+        autoCapitalize='none'
+        autoCompleteType='email'
+        textContentType='emailAddress'
+        keyboardType='email-address'
       />
       <TextInput
-        label="Password"
-        returnKeyType="done"
+        label='Password'
+        returnKeyType='done'
         value={password.value}
         onChangeText={(text) => setPassword({ value: text, error: '' })}
         error={!!password.error}
@@ -57,12 +59,11 @@ const LoginScreen = ({ navigation }) => {
       />
       <View style={styles.forgotPassword}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('ForgotPasswordScreen')}
-        >
+          onPress={() => navigation.navigate('ForgotPasswordScreen')}>
           <Text style={styles.forgot}>Forgot your password?</Text>
         </TouchableOpacity>
       </View>
-      <Button mode="contained" onPress={onLoginPressed}>
+      <Button mode='contained' onPress={onLoginPressed}>
         Login
       </Button>
       <View style={styles.row}>

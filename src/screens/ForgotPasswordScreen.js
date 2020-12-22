@@ -6,6 +6,7 @@ import Header from '../components/Header'
 import TextInput from '../components/TextInput'
 import Button from '../components/Button'
 import { emailValidator } from '../helpers/emailValidator'
+import { Avatar } from 'react-native-paper'
 
 const ForgotPasswordScreen = ({ navigation }) => {
   const [email, setEmail] = useState({ value: '', error: '' })
@@ -22,26 +23,26 @@ const ForgotPasswordScreen = ({ navigation }) => {
   return (
     <Background>
       <BackButton goBack={navigation.goBack} />
-      <Logo />
+      {/* <Logo /> */}
+      <Avatar.Icon size={124} icon='account-circle-outline' />
       <Header>Restore Password</Header>
       <TextInput
-        label="E-mail address"
-        returnKeyType="done"
+        label='E-mail address'
+        returnKeyType='done'
         value={email.value}
         onChangeText={(text) => setEmail({ value: text, error: '' })}
         error={!!email.error}
         errorText={email.error}
-        autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
-        description="You will receive email with password reset link."
+        autoCapitalize='none'
+        autoCompleteType='email'
+        textContentType='emailAddress'
+        keyboardType='email-address'
+        description='You will receive email with password reset link.'
       />
       <Button
-        mode="contained"
+        mode='contained'
         onPress={sendResetPasswordEmail}
-        style={{ marginTop: 16 }}
-      >
+        style={{ marginTop: 16 }}>
         Send Instructions
       </Button>
     </Background>
