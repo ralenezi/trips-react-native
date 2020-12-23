@@ -15,6 +15,7 @@ import {
 
 //components
 import TripList from "./src/components/trip/TripList";
+import TripDetails from "./src/components/trip/TripDetails";
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,7 @@ const App = () => {
             component={ForgotPasswordScreen}
           />
           <Stack.Screen name="TripList" component={TripList} />
+          <Stack.Screen name="TripDetail" component={TripDetails} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
