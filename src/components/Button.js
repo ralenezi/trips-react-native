@@ -1,32 +1,33 @@
-import React from 'react'
-import { StyleSheet } from 'react-native'
-import { Button as PaperButton } from 'react-native-paper'
-import { theme } from '../core/theme'
+import { Button as PaperButton } from "react-native-paper";
+import React from "react";
+import { StyleSheet } from "react-native";
+import { theme } from "../core/theme";
 
 const Button = ({ mode, style, ...props }) => (
   <PaperButton
     style={[
       styles.button,
-      mode === 'outlined' && { backgroundColor: theme.colors.surface },
+      mode === "outlined" && { backgroundColor: theme.colors.surface },
       style,
     ]}
     labelStyle={styles.text}
     mode={mode}
     {...props}
   />
-)
+);
 
+// REVIEW: move styles into its own file
 const styles = StyleSheet.create({
   button: {
-    width: '100%',
+    width: "100%",
     marginVertical: 10,
     paddingVertical: 2,
   },
   text: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 15,
     lineHeight: 26,
   },
-})
+});
 
-export default Button
+export default Button;

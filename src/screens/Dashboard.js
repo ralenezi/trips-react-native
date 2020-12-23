@@ -1,28 +1,31 @@
-import React from 'react'
-import Backgroundz from './Backgroundz'
-import Logo from '../components/Logo'
-import Header from '../components/Header'
-import Paragraph from '../components/Paragraph'
-import Button from '../components/Button'
-import { Avatar, BottomNavigation, Text } from 'react-native-paper'
-import { View } from 'react-native'
+import { Avatar, BottomNavigation, Text } from "react-native-paper";
+
+import Backgroundz from "./Backgroundz";
+import Button from "../components/Button";
+import Header from "../components/Header";
+import Logo from "../components/Logo";
+import Paragraph from "../components/Paragraph";
+import React from "react";
+import { View } from "react-native";
+
+// REVIEW: cleanup imports
 
 const Dashboard = ({ navigation }) => {
-  const MusicRoute = () => <Backgroundz navigation={navigation} />
-  const AlbumsRoute = () => <Text>Albums</Text>
-  const RecentsRoute = () => <Text>Recents</Text>
-  const [index, setIndex] = React.useState(0)
+  const MusicRoute = () => <Backgroundz navigation={navigation} />;
+  const AlbumsRoute = () => <Text>Albums</Text>;
+  const RecentsRoute = () => <Text>Recents</Text>;
+  const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'music', title: 'Music', icon: 'queue-music' },
-    { key: 'albums', title: 'Albums', icon: 'album' },
-    { key: 'recents', title: 'Recents', icon: 'history' },
-  ])
+    { key: "music", title: "Music", icon: "queue-music" },
+    { key: "albums", title: "Albums", icon: "album" },
+    { key: "recents", title: "Recents", icon: "history" },
+  ]);
 
   const renderScene = BottomNavigation.SceneMap({
     music: MusicRoute,
     albums: AlbumsRoute,
     recents: RecentsRoute,
-  })
+  });
 
   return (
     <BottomNavigation
@@ -30,10 +33,10 @@ const Dashboard = ({ navigation }) => {
       onIndexChange={setIndex}
       renderScene={renderScene}
     />
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
 /*
 
 */

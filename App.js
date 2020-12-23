@@ -1,24 +1,24 @@
-import React from "react";
-import { Provider } from "react-native-paper";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { theme } from "./src/core/theme";
-
 //screens
 import {
-  StartScreen,
+  Dashboard,
+  ForgotPasswordScreen,
   LoginScreen,
   RegisterScreen,
-  ForgotPasswordScreen,
-  Dashboard,
+  StartScreen,
 } from "./src/screens";
 
+import { NavigationContainer } from "@react-navigation/native";
+import { Provider } from "react-native-paper";
+import React from "react";
 //components
 import TripList from "./src/components/trip/TripList";
+import { createStackNavigator } from "@react-navigation/stack";
+import { theme } from "./src/core/theme";
 
 const Stack = createStackNavigator();
 
 const App = () => {
+  // REVIEW: move your navigation into its own component
   return (
     <Provider theme={theme}>
       <NavigationContainer>
