@@ -13,11 +13,11 @@ import { observer } from "mobx-react";
 import tripStore from "../../stores/tripStore";
 import { ScrollView } from "react-native-gesture-handler";
 
-const TripList = () => {
+const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
 
   const tripsList = tripStore.trips.map((trip) => (
-    <TripItem trip={trip} key={trip.id} />
+    <TripItem trip={trip} key={trip.id} navigation={navigation} />
   ));
 
   return (
