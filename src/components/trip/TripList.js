@@ -11,7 +11,8 @@ import { observer } from "mobx-react";
 
 //stores
 import tripStore from "../../stores/tripStore";
-import { ScrollView } from "react-native-gesture-handler";
+// import { ScrollView } from "react-native-gesture-handler";
+import { Wrapper } from "./styles";
 
 const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
@@ -21,9 +22,9 @@ const TripList = ({ navigation }) => {
   ));
 
   return (
-    <ScrollView>
+    <Wrapper>
       <List>{tripsList}</List>
-    </ScrollView>
+    </Wrapper>
   );
 };
 

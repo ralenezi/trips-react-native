@@ -31,10 +31,8 @@ const TripDetails = ({ route }) => {
 
   return (
     <TripDetailWrapper>
-      <TripDetailTitle>{trip.name}</TripDetailTitle>
+      <TripDetailTitle>{trip.title}</TripDetailTitle>
       <TripDetailImage source={{ uri: trip.image }} />
-
-      <TripDetailDescription> {trip.price}</TripDetailDescription>
       <TripDetailDescription>{trip.description}</TripDetailDescription>
     </TripDetailWrapper>
   );
