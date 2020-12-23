@@ -10,6 +10,8 @@ import { observer } from "mobx-react";
 //stores
 import tripStore from "../../stores/tripStore";
 
+import { Wrapper } from "./styles";
+
 
 const TripList = ({ navigation }) => {
   if (tripStore.loading || tripStore.trips.length === 0) return <Spinner />;
@@ -20,9 +22,9 @@ const TripList = ({ navigation }) => {
   ));
 
   return (
-    <ScrollView>
+    <Wrapper>
       <List>{tripsList}</List>
-    </ScrollView>
+    </Wrapper>
   );
 };
 
