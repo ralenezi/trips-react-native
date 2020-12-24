@@ -7,8 +7,8 @@ export const Title = styled.Text`
 `;
 
 export const TripImage = styled.Image`
-  width: 100%;
-  height: 50%;
+  width: 30%;
+  height: 100%;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 2%;
