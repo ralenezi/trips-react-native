@@ -1,5 +1,14 @@
 //screens
-import { Dashboard, ForgotPasswordScreen, StartScreen } from "./src/screens";
+import {
+  StartScreen,
+  LoginScreen,
+  RegisterScreen,
+  ForgotPasswordScreen,
+  Dashboard,
+  AddTripScreen,
+  TripListScreen,
+  TripDetailScreen,
+} from "./src/screens";
 
 import LoginScreen from "./src/screens/authentication/LoginScreen";
 import { NavigationContainer } from "@react-navigation/native";
@@ -13,7 +22,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { theme } from "./src/core/theme";
 
 import TripDetails from "./src/components/trip/TripDetails";
-
 
 const Stack = createStackNavigator();
 
@@ -35,8 +43,9 @@ const App = () => {
             name="ForgotPasswordScreen"
             component={ForgotPasswordScreen}
           />
-          <Stack.Screen name="TripList" component={TripList} />
-          <Stack.Screen name="TripDetail" component={TripDetails} />
+          <Stack.Screen name="TripListScreen" component={TripListScreen} />
+          <Stack.Screen name="TripDetail" component={TripDetailScreen} />
+          <Stack.Screen name="AddTripScreen" component={AddTripScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

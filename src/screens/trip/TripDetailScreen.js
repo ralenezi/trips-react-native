@@ -3,15 +3,15 @@ import React from "react";
 //native base
 import { Spinner } from "native-base";
 
-//Components
-import TripItem from "./TripItem";
-
 // mobx
 import { observer } from "mobx-react";
 
 //stores
 import tripStore from "../../stores/tripStore";
-import { ScrollView } from "react-native-gesture-handler";
+
+//components
+import Background from "../../components/Background";
+import BackButton from "../../components/BackButton";
 
 //styles
 import {
@@ -21,21 +21,20 @@ import {
   TripDetailDescription,
 } from "./styles";
 
-const TripDetails = ({ route }) => {
+const TripDetailScreen = ({ route, navigation }) => {
   if (tripStore.loading) return <Spinner />;
 
   const { trip } = route.params;
-  //   const tripsList = tripStore.trips.map((trip) => (
-  //     <TripItem trip={trip} key={trip.id} />
-  //   ));
 
   return (
-    <TripDetailWrapper>
+    <Background>
+      <BackButton goBack={navigation.goBack} />
       <TripDetailTitle>{trip.title}</TripDetailTitle>
       <TripDetailImage source={{ uri: trip.image }} />
       <TripDetailDescription>{trip.description}</TripDetailDescription>
-    </TripDetailWrapper>
+      {/* </TripDetailWrapper> */}
+    </Background>
   );
 };
 
-export default observer(TripDetails);
+export default observer(TripDetailScreen);

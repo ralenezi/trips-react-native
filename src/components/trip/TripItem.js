@@ -1,5 +1,5 @@
 //react-native
-import { View } from "native-base";
+import { ListItem } from "native-base";
 
 //react
 import React from "react";
@@ -12,12 +12,10 @@ import { observer } from "mobx-react";
 
 const TripItem = ({ trip, navigation }) => {
   return (
-    <View>
+    <ListItem onPress={() => navigation.navigate("TripDetail", { trip: trip })}>
       <TripImage source={{ uri: trip.image }} />
-      <Title onPress={() => navigation.navigate("TripDetail", { trip: trip })}>
-        {trip.title}
-      </Title>
-    </View>
+      <Title>{trip.title}</Title>
+    </ListItem>
   );
 };
 
