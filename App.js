@@ -5,8 +5,9 @@ import {
   RegisterScreen,
   ForgotPasswordScreen,
   Dashboard,
-  TripListScreen,
   AddTripScreen,
+  TripListScreen,
+  TripDetailScreen,
 } from "./src/screens";
 
 import LoginScreen from "./src/screens/authentication/LoginScreen";
@@ -43,7 +44,7 @@ const App = () => {
             component={ForgotPasswordScreen}
           />
           <Stack.Screen name="TripListScreen" component={TripListScreen} />
-          <Stack.Screen name="TripDetail" component={TripDetails} />
+          <Stack.Screen name="TripDetail" component={TripDetailScreen} />
           <Stack.Screen name="AddTripScreen" component={AddTripScreen} />
         </Stack.Navigator>
       </NavigationContainer>

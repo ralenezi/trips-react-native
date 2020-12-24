@@ -20,7 +20,7 @@ class TripStore {
       );
       this.loading = false;
     } catch (error) {
-      console.error("tripStore --> line 17 --> fetchTrips");
+      console.error("tripStore --> fetchTrips", error);
     }
   }; //end fetch
 
@@ -30,7 +30,7 @@ class TripStore {
       const response = await instance.post("/trips", newTrip);
       this.trips.push(response.data);
     } catch (error) {
-      console.error("error");
+      console.error("tripStore --> addTrip", error);
     }
   }; //end add trip
 } //end class

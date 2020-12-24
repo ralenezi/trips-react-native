@@ -1,5 +1,5 @@
 //native base
-import { List, Spinner, View } from "native-base";
+import { List, Spinner } from "native-base";
 
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";

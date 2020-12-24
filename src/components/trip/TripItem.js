@@ -1,5 +1,5 @@
 //react-native
-import { ListItem, View } from "native-base";
+import { ListItem } from "native-base";
 
 //react
 import React from "react";
