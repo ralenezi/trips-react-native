@@ -2,14 +2,14 @@
 import React, { useState } from "react";
 
 //components
-import Background from "../components/Background";
-import Header from "../components/Header";
-import Button from "../components/Button";
-import TextInput from "../components/TextInput";
-import BackButton from "../components/BackButton";
+import Background from "../../components/Background";
+import Header from "../../components/Header";
+import Button from "../../components/Button";
+import TextInput from "../../components/TextInput";
+import BackButton from "../../components/BackButton";
 
 //stores
-import tripStore from "../stores/tripStore";
+import tripStore from "../../stores/tripStore";
 
 const AddTripScreen = ({ navigation }) => {
   //state

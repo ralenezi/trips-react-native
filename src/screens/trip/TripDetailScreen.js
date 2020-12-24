@@ -9,8 +9,9 @@ import { observer } from "mobx-react";
 //stores
 import tripStore from "../../stores/tripStore";
 
-//button
-import BackButton from "../BackButton";
+//components
+import Background from "../../components/Background";
+import BackButton from "../../components/BackButton";
 
 //styles
 import {
@@ -20,20 +21,21 @@ import {
   TripDetailDescription,
 } from "./styles";
 
-const TripDetails = ({ route, navigation }) => {
+const TripDetailScreen = ({ route, navigation }) => {
   if (tripStore.loading) return <Spinner />;
 
   const { trip } = route.params;
 
   return (
-    <TripDetailWrapper>
+    <Background>
       <BackButton goBack={navigation.goBack} />
       <TripDetailTitle>{trip.title}</TripDetailTitle>
       <TripDetailImage source={{ uri: trip.image }} />
 
       <TripDetailDescription>{trip.description}</TripDetailDescription>
-    </TripDetailWrapper>
+      {/* </TripDetailWrapper> */}
+    </Background>
   );
 };
 
-export default observer(TripDetails);
+export default observer(TripDetailScreen);

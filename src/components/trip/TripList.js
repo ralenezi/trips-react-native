@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 //native base
-import { List, Spinner, View } from "native-base";
+import { List, Spinner } from "native-base";
 
 //Components
 import TripItem from "./TripItem";
