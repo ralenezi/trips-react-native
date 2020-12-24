@@ -33,7 +33,7 @@ const LoginScreen = ({ navigation }) => {
       password: password.value,
     };
     await authStore.signup(user);
-    if (authStore.user) navigation.navigate("TripList");
+    if (authStore.user) navigation.navigate("TripListScreen");
 
     // navigation.reset({
     //   index: 0,
