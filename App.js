@@ -11,10 +11,11 @@ import {
   RegisterScreen,
   ForgotPasswordScreen,
   Dashboard,
+  TripListScreen,
+  AddTripScreen,
 } from "./src/screens";
 
 //components
-import TripList from "./src/components/trip/TripList";
 import TripDetails from "./src/components/trip/TripDetails";
 
 const Stack = createStackNavigator();
@@ -24,7 +25,7 @@ const App = () => {
     <Provider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="TripList"
+          initialRouteName="AddTripScreen"
           screenOptions={{
             headerShown: false,
           }}
@@ -37,8 +38,9 @@ const App = () => {
             name="ForgotPasswordScreen"
             component={ForgotPasswordScreen}
           />
-          <Stack.Screen name="TripList" component={TripList} />
+          <Stack.Screen name="TripListScreen" component={TripListScreen} />
           <Stack.Screen name="TripDetail" component={TripDetails} />
+          <Stack.Screen name="AddTripScreen" component={AddTripScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

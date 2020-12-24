@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 //native base
-import { List, Spinner } from "native-base";
+import { List, Spinner, View } from "native-base";
 
 //Components
 import TripItem from "./TripItem";
@@ -11,7 +11,9 @@ import { observer } from "mobx-react";
 
 //stores
 import tripStore from "../../stores/tripStore";
-import { ScrollView } from "react-native-gesture-handler";
+
+//styles
+import { Wrapper } from "./styles";
 
 const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
@@ -21,9 +23,9 @@ const TripList = ({ navigation }) => {
   ));
 
   return (
-    <ScrollView>
+    <Wrapper>
       <List>{tripsList}</List>
-    </ScrollView>
+    </Wrapper>
   );
 };
 

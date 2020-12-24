@@ -7,12 +7,11 @@ import { Text } from "react-native";
 //trip component
 import TripList from "../components/trip/TripList";
 
-const TripListScreen = () => {
+const TripListScreen = ({ navigation }) => {
   return (
-    // <Background>
-    //   <TripList />
-    // </Background>
-    <Text>hellooo</Text>
+    <Background>
+      <TripList navigation={navigation} />
+    </Background>
   );
 };
 

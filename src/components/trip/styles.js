@@ -11,8 +11,8 @@ export const Title = styled.Text`
 `;
 
 export const TripImage = styled.Image`
-  width: 50%;
-  height: 50%;
+  width: 30%;
+  height: 100%;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 2%;
@@ -43,3 +43,52 @@ export const TripDetailDescription = styled.Text`
 `;
 
 //****detail******
+
+export const Wrapper = styled.View`
+  margin-top: 20%;
+  align-items: center;
+  justify-content: center;
+`;
+
+//***********************Form***************************
+export const FormContainer = styled.View`
+  margin-top: 20%;
+  flex: 1;
+  align-self: stretch;
+  justify-content: center;
+  align-items: center;
+  padding-right: 60px;
+  padding-left: 60px;
+`;
+
+export const FormTitle = styled.Text`
+  font-size: 24px;
+  margin-bottom: 20px;
+  border-bottom-color: blue;
+`;
+
+export const FormTextInput = styled.TextInput`
+  align-self: stretch;
+  text-align: left;
+  height: 40px;
+  width: 90%;
+  margin-bottom: 30px;
+  border-bottom-color: blue;
+  border-bottom-width: 1px;
+`;
+
+export const FormButton = styled.TouchableOpacity`
+  align-self: stretch;
+  align-items: center;
+  padding: 20px;
+  margin-top: 30px;
+  background-color: gray;
+`;
+
+export const FormButtonText = styled.Text`
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+`;
+
+//end Form
