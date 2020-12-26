@@ -1,4 +1,7 @@
+
+//react
 import React from "react";
+
 //screens
 import {
   StartScreen,
@@ -11,10 +14,14 @@ import {
   TripDetailScreen,
 } from "./src/screens";
 
+//navigation
 import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+//native
 import { Provider } from "react-native-paper";
 
-import { createStackNavigator } from "@react-navigation/stack";
+//theme
 import { theme } from "./src/core/theme";
 
 const Stack = createStackNavigator();
