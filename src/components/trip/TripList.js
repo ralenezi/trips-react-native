@@ -2,7 +2,7 @@
 import { List, Spinner } from "native-base";
 
 import React from "react";
-import { ScrollView } from "react-native-gesture-handler";
+
 //Components
 import TripItem from "./TripItem";
 // mobx
