@@ -14,6 +14,7 @@ const TripItem = ({ trip, navigation }) => {
   return (
     <ListItem onPress={() => navigation.navigate("TripDetail", { trip: trip })}>
       <TripImage source={{ uri: trip.image }} />
+
       <Title>{trip.title}</Title>
     </ListItem>
   );

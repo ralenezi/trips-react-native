@@ -30,7 +30,6 @@ const AddTripScreen = ({ navigation }) => {
   return (
     <Background>
       <BackButton goBack={navigation.goBack} />
-      {/* <Logo /> */}
 
       <Header>Add new trip</Header>
       <TextInput

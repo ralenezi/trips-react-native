@@ -1,3 +1,6 @@
+//react
+import React from "react";
+
 //screens
 import {
   StartScreen,
@@ -10,18 +13,15 @@ import {
   TripDetailScreen,
 } from "./src/screens";
 
-import LoginScreen from "./src/screens/authentication/LoginScreen";
+//navigation
 import { NavigationContainer } from "@react-navigation/native";
-import { Provider } from "react-native-paper";
-import React from "react";
-import RegisterScreen from "./src/screens/authentication/RegisterScreen";
-//components
-import TripList from "./src/components/trip/TripList";
-
 import { createStackNavigator } from "@react-navigation/stack";
-import { theme } from "./src/core/theme";
 
-import TripDetails from "./src/components/trip/TripDetails";
+//native
+import { Provider } from "react-native-paper";
+
+//theme
+import { theme } from "./src/core/theme";
 
 const Stack = createStackNavigator();
 
