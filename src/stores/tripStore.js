@@ -35,10 +35,15 @@ class TripStore {
   }; //end add trip
 
   //edit trip
-  editTrip = async (newTrip) => {
+  editTrip = async (updatedTrip) => {
     try {
-      const response = await instance.put("/trips", newTrip);
-      this.trips.push(response.data);
+      const response = await instance.put(
+        `/trips/${updatedTrip.id}`,
+        updatedTrip
+      );
+
+      const trip = this.trips.find((trip) => trip.id === updatedTrip.id);
+      for (const key in trip) trip[key] = updatedTrip[key];
     } catch (error) {
       console.error("tripStore --> editTrip", error);
     }

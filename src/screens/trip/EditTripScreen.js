@@ -12,17 +12,13 @@ import BackButton from "../../components/BackButton";
 import tripStore from "../../stores/tripStore";
 
 const EditTripScreen = ({ route, navigation }) => {
-  const { test } = route.params;
+  const { trip } = route.params;
   //state
-  const [trip, setTrip] = useState({
-    title: "",
-    description: "",
-    image: "",
-  });
+  const [tripEdit, setTrip] = useState(trip);
 
   //add data to backend
   const handleEdit = () => {
-    tripStore.editTrip(trip);
+    tripStore.editTrip(tripEdit);
     navigation.navigate("TripListScreen");
   };
 
@@ -30,25 +26,27 @@ const EditTripScreen = ({ route, navigation }) => {
 
   return (
     <Background>
-      <Header>{test}</Header>
       <BackButton goBack={navigation.goBack} />
 
-      <Header>Edit trip</Header>
+      <Header>Edit</Header>
       <TextInput
         label="Title"
-        onChangeText={(title) => setTrip({ ...trip, title })}
+        value={tripEdit.title}
+        onChangeText={(title) => setTrip({ ...tripEdit, title })}
       />
       <TextInput
         label="Description"
-        onChangeText={(description) => setTrip({ ...trip, description })}
+        value={tripEdit.description}
+        onChangeText={(description) => setTrip({ ...tripEdit, description })}
       />
       <TextInput
         label="Image"
-        onChangeText={(image) => setTrip({ ...trip, image })}
+        value={tripEdit.image}
+        onChangeText={(image) => setTrip({ ...tripEdit, image })}
       />
 
       <Button mode="contained" onPress={handleEdit}>
-        Add
+        Edit
       </Button>
     </Background>
   );
