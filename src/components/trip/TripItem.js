@@ -5,18 +5,30 @@ import { ListItem } from "native-base";
 import React from "react";
 
 //styles
-import { Title, TripImage } from "./styles";
+import { Title, TripImage, IconStyle } from "./styles";
 
 //observer
 import { observer } from "mobx-react";
+import authStore from "../../stores/authStore";
 
 const TripItem = ({ trip, navigation }) => {
   return (
-    <ListItem onPress={() => navigation.navigate("TripDetail", { trip: trip })}>
-      <TripImage source={{ uri: trip.image }} />
+    <>
+      {/* {trip.userId === authStore.user.id && (
+        <IconStyle
+          name="EditOutlined"
+          type="antdesign"
+          onPress={() => navigation.navigate("EditTripScreen", { trip: trip })}
+        />
+      )} */}
 
-      <Title>{trip.title}</Title>
-    </ListItem>
+      <ListItem
+        onPress={() => navigation.navigate("TripDetail", { trip: trip })}
+      >
+        <TripImage source={{ uri: trip.image }} />
+        <Title>{trip.title}</Title>
+      </ListItem>
+    </>
   );
 };
 

@@ -1,4 +1,3 @@
-
 //react
 import React from "react";
 
@@ -12,6 +11,7 @@ import {
   AddTripScreen,
   TripListScreen,
   TripDetailScreen,
+  EditTripScreen,
 } from "./src/screens";
 
 //navigation
@@ -31,7 +31,7 @@ const App = () => {
     <Provider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="LoginScreen"
+          initialRouteName="TripListScreen"
           screenOptions={{
             headerShown: false,
           }}
@@ -47,6 +47,7 @@ const App = () => {
           <Stack.Screen name="TripListScreen" component={TripListScreen} />
           <Stack.Screen name="TripDetail" component={TripDetailScreen} />
           <Stack.Screen name="AddTripScreen" component={AddTripScreen} />
+          <Stack.Screen name="EditTripScreen" component={EditTripScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
