@@ -20,6 +20,11 @@ import { Left, Right } from 'native-base'
 
 const TripListScreen = ({ navigation }) => {
   let screenItem = ''
+  const logout = () => {
+    authStore.signout
+    console.log('logged out')
+    navigation.replace('LoginScreen')
+  }
   if (authStore.user) {
     screenItem = (
       <>
@@ -29,6 +34,8 @@ const TripListScreen = ({ navigation }) => {
         <Button onPress={() => navigation.navigate('AddTripScreen')}>
           add new trip
         </Button>
+        {/* logout */}
+        <Button onPress={logout}>logout</Button>
       </>
     )
   } else

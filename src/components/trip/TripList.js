@@ -18,10 +18,13 @@ import { Title, TripImage } from './styles'
 
 const TripList = ({ navigation }) => {
   if (tripStore.loading || tripStore.trips.length === 0) return <Spinner />
-
-  const tripsList = tripStore.trips.map((trip) => (
-    <TripItem trip={trip} key={trip.id} navigation={navigation} />
-  ))
+  const tripsList = tripStore.trips
+    .filter((trip) =>
+      authStore.user ? trip.userId != authStore.user.id : trip
+    )
+    .map((trip) => (
+      <TripItem trip={trip} key={trip.id} navigation={navigation} />
+    ))
 
   return (
     <>
