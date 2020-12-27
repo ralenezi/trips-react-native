@@ -6,9 +6,6 @@ import { StyleSheet } from "react-native";
 
 import React from "react";
 
-//styles
-import { TripImage } from "./styles";
-
 //observer
 import { observer } from "mobx-react";
 import tripStore from "../../stores/tripStore";
@@ -22,33 +19,30 @@ const TripItem = ({ trip, navigation }) => {
       screenItem = (
         <>
           <Title onPress={() => tripStore.deleteTrip(trip.id)}>🗑</Title>
+          <Title
+            onPress={() =>
+              navigation.navigate("EditTripScreen", { trip: trip })
+            }
+          >
+            edit
+          </Title>
         </>
       );
     }
   } else screenItem = "";
   return (
-    <>
-      {/* {trip.userId === authStore.user.id && (
-        <IconStyle
-          name="EditOutlined"
-          type="antdesign"
-          onPress={() => navigation.navigate("EditTripScreen", { trip: trip })}
-        />
-      )} */}
-
-      <Card>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("TripDetail", { trip: trip })}
-        >
-          <Card.Cover source={{ uri: trip.image }} />
-        </TouchableOpacity>
-        <Surface style={styles.surface}>
-          <Title>{trip.title}</Title>
-          <Title>By: {trip.user.username}</Title>
-          <Title>{screenItem}</Title>
-        </Surface>
-      </Card>
-    </>
+    <Card>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("TripDetail", { trip: trip })}
+      >
+        <Card.Cover source={{ uri: trip.image }} />
+      </TouchableOpacity>
+      <Surface style={styles.surface}>
+        <Title>{trip.title}</Title>
+        <Title>By: {trip.user.username}</Title>
+        <Title>{screenItem}</Title>
+      </Surface>
+    </Card>
   );
 };
 
