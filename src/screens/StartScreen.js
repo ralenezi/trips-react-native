@@ -1,28 +1,23 @@
-import React from 'react'
-import Background from '../components/Background'
-import Logo from '../components/Logo'
-import Header from '../components/Header'
-import Button from '../components/Button'
-import Paragraph from '../components/Paragraph'
-import { Avatar } from 'react-native-paper'
+import React from "react";
+import BackgroundHome from "../components/BackgroundHome";
+
+import ButtonHome from "../components/ButtonHome";
 
 const StartScreen = ({ navigation }) => (
-  <Background>
-    {/* <Logo /> */}
-    <Avatar.Icon size={124} icon='account-circle-outline' />
-    <Header>Login Template</Header>
-    <Paragraph>
-      The easiest way to start with your amazing application.
-    </Paragraph>
-    <Button mode='contained' onPress={() => navigation.navigate('LoginScreen')}>
-      Login
-    </Button>
-    <Button
-      mode='outlined'
-      onPress={() => navigation.navigate('RegisterScreen')}>
-      Sign Up
-    </Button>
-  </Background>
-)
+  <BackgroundHome>
+    <ButtonHome
+      mode="contained"
+      onPress={() => navigation.navigate("LoginScreen")}
+    >
+      Sign in
+    </ButtonHome>
+    <ButtonHome
+      mode="outlined"
+      onPress={() => navigation.navigate("TripListScreen")}
+    >
+      Continue
+    </ButtonHome>
+  </BackgroundHome>
+);
 
-export default StartScreen
+export default StartScreen;
