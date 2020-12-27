@@ -11,7 +11,9 @@ import {
   AddTripScreen,
   TripListScreen,
   TripDetailScreen,
-} from './src/screens'
+  EditTripScreen,
+} from "./src/screens";
+
 
 //navigation
 import { NavigationContainer } from '@react-navigation/native'
@@ -45,9 +47,10 @@ const App = () => {
             name='ForgotPasswordScreen'
             component={ForgotPasswordScreen}
           />
-          <Stack.Screen name='TripListScreen' component={TripListScreen} />
-          <Stack.Screen name='TripDetail' component={TripDetailScreen} />
-          <Stack.Screen name='AddTripScreen' component={AddTripScreen} />
+          <Stack.Screen name="TripListScreen" component={TripListScreen} />
+          <Stack.Screen name="TripDetail" component={TripDetailScreen} />
+          <Stack.Screen name="AddTripScreen" component={AddTripScreen} />
+          <Stack.Screen name="EditTripScreen" component={EditTripScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

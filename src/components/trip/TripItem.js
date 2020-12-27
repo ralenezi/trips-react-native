@@ -3,13 +3,19 @@ import { Card, Title, Paragraph, Surface, Text } from 'react-native-paper'
 import { StyleSheet } from 'react-native'
 
 //react
-import React from 'react'
+
+import React from "react";
+
+//styles
+import { Title, TripImage, IconStyle } from "./styles";
+
 
 //observer
 import { observer } from 'mobx-react'
 import tripStore from '../../stores/tripStore'
 import authStore from '../../stores/authStore'
 import { TouchableOpacity } from 'react-native'
+
 
 const TripItem = ({ trip, navigation }) => {
   let screenItem = ''
@@ -23,6 +29,26 @@ const TripItem = ({ trip, navigation }) => {
     }
   } else screenItem = ''
   return (
+
+    <>
+      {/* {trip.userId === authStore.user.id && (
+        <IconStyle
+          name="EditOutlined"
+          type="antdesign"
+          onPress={() => navigation.navigate("EditTripScreen", { trip: trip })}
+        />
+      )} */}
+
+      <ListItem
+        onPress={() => navigation.navigate("TripDetail", { trip: trip })}
+      >
+        <TripImage source={{ uri: trip.image }} />
+        <Title>{trip.title}</Title>
+      </ListItem>
+    </>
+  );
+};
+
     <Card>
       <TouchableOpacity
         onPress={() => navigation.navigate('TripDetail', { trip: trip })}>
@@ -36,6 +62,7 @@ const TripItem = ({ trip, navigation }) => {
     </Card>
   )
 }
+
 
 export default observer(TripItem)
 // export default TripItem

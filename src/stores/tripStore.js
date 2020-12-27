@@ -32,6 +32,19 @@ class TripStore {
     } catch (error) {
       console.error('tripStore --> addTrip', error)
     }
+
+  }; //end add trip
+
+  //edit trip
+  editTrip = async (newTrip) => {
+    try {
+      const response = await instance.put("/trips", newTrip);
+      this.trips.push(response.data);
+    } catch (error) {
+      console.error("tripStore --> editTrip", error);
+    }
+  }; //end edit trip
+
   } //end add trip
   //delete trip
   deleteTrip = async (tripId) => {
@@ -52,6 +65,7 @@ class TripStore {
       console.log('TripStore -> findUser -> error', error)
     }
   }
+
 } //end class
 
 const tripStore = new TripStore()

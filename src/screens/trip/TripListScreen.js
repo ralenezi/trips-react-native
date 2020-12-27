@@ -1,6 +1,11 @@
 import React from 'react'
 import { SafeAreaView, ScrollView, Text, View } from 'react-native'
 
+
+//native base
+import { Spinner } from "native-base";
+
+
 //styles
 import { Title } from '../../components/trip/styles'
 
@@ -42,5 +47,6 @@ const TripListScreen = ({ navigation }) => {
     </SafeAreaView>
   )
 }
+
 
 export default observer(TripListScreen)

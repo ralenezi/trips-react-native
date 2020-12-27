@@ -6,3 +6,4 @@ export { default as Dashboard } from "./Dashboard";
 export { default as TripListScreen } from "./trip/TripListScreen";
 export { default as AddTripScreen } from "./trip/AddTripScreen";
 export { default as TripDetailScreen } from "./trip/TripDetailScreen";
+export { default as EditTripScreen } from "./trip/EditTripScreen";
