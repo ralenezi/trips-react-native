@@ -37,8 +37,8 @@ const TripItem = ({ trip, navigation }) => {
   )
 }
 
-// export default observer(TripItem)
-export default TripItem
+export default observer(TripItem)
+// export default TripItem
 const styles = StyleSheet.create({
   surface: {
     padding: 8,
