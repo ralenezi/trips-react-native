@@ -2,7 +2,9 @@ import instance from "./instance";
 import { makeAutoObservable } from "mobx";
 
 class profileStore {
+
   profiles = [];
+
   loading = true;
 
   constructor() {

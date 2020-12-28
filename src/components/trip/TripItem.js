@@ -39,7 +39,11 @@ const TripItem = ({ trip, navigation }) => {
       </TouchableOpacity>
       <Surface style={styles.surface}>
         <Title>{trip.title}</Title>
-        <Title>By: {trip.user.username}</Title>
+        <Title
+          onPress={() => navigation.navigate("ProfileScreen", trip.userId)}
+        >
+          By: {trip.user.username}
+        </Title>
         <Title>{screenItem}</Title>
       </Surface>
     </Card>

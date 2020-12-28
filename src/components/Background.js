@@ -6,6 +6,7 @@ import {
 } from "react-native";
 import { theme } from "../core/theme";
 
+
 import { View } from "native-base";
 
 const Background = ({ children }) => (
@@ -22,6 +23,7 @@ const Background = ({ children }) => (
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    width: "100%",
     resizeMode: "stretch",
     backgroundColor: theme.colors.surface,
   },
