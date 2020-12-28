@@ -26,6 +26,8 @@ import { theme } from "./src/core/theme";
 import authStore from "./src/stores/authStore";
 import TripList from "./src/components/trip/TripList";
 
+// move your navigators to a separate component.
+
 const Stack = createStackNavigator();
 
 const App = () => {
