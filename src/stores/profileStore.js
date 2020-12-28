@@ -2,7 +2,12 @@ import instance from "./instance";
 import { makeAutoObservable } from "mobx";
 
 class profileStore {
-  trips = [];
+  profiles = {
+    image:
+      "https://www.goway.com/media/cache/aa/79/aa79264f49aae4d4b2d77f0abdeb16fc.jpg",
+    bio: "hello its me",
+    userId: "1",
+  };
   loading = true;
 
   constructor() {

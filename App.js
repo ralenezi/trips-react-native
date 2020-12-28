@@ -12,6 +12,7 @@ import {
   TripListScreen,
   TripDetailScreen,
   EditTripScreen,
+  ProfileScreen,
 } from "./src/screens";
 
 //navigation
@@ -51,6 +52,7 @@ const App = () => {
           <Stack.Screen name="TripDetail" component={TripDetailScreen} />
           <Stack.Screen name="AddTripScreen" component={AddTripScreen} />
           <Stack.Screen name="EditTripScreen" component={EditTripScreen} />
+          <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
