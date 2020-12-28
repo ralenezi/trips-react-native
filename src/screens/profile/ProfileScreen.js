@@ -10,7 +10,7 @@ import { observer } from "mobx-react";
 //stores
 import profileStore from "../../stores/profileStore";
 import authStore from "../../stores/authStore";
-import tripStore from "../../stores/profileStore";
+
 //components
 import Background from "../../components/Background";
 import BackButton from "../../components/BackButton";
@@ -19,43 +19,52 @@ import BackButton from "../../components/BackButton";
 import { ProfileImage, ProfileBio, ProfileTrips } from "./styles";
 
 const ProfileScreen = ({ route, navigation }) => {
-  if (tripStore.loading) return <Spinner />;
-
+  //fetch profile
   const userId = route.params;
+  const profile = profileStore.fetchProfile(userId); //profile is a promise
 
+  //only user can edit his profile
+  const edit = "";
+  if (authStore.user) {
+    if (authStore.user.id === userId) {
+      edit = (
+        <>
+          <Title
+            onPress={() =>
+              navigation.navigate("EditTripScreen", { trip: trip })
+            }
+          >
+            edit
+          </Title>
+        </>
+      );
+    }
+  }
+
+  //number of trips >> Comment out la2ana promise uncomment if you solve the issue
   //   const totalTrips = tripStore.trips.filter(
-  //     (trip) => trip.userId === +profile.userId
+  //     (trip) => trip.userId === userId
   //   );
-  //   const edit = "";
-  //   if (authStore.user) {
-  //     if (authStore.user.id === profile.userId) {
-  //       edit = (
-  //         <>
-  //           <Title
-  //             onPress={() =>
-  //               navigation.navigate("EditTripScreen", { trip: trip })
-  //             }
-  //           >
-  //             edit
-  //           </Title>
-  //         </>
-  //       );
-  //     }
-  //   }
-
   return (
     <Background>
       <BackButton goBack={navigation.goBack} />
-      {/* <Title>{edit}</Title> */}
+      <Title>Profile</Title>
+      <Title
+        onPress={
+          (() => navigation.navigate("EditProfileScreen"), { profile: profile })
+        }
+      >
+        {edit}
+      </Title>
 
-      {/* <ProfileImage
+      <ProfileImage
         source={{ uri: profile.image }}
         style={{ borderRadius: "100%" }}
-      /> */}
+      />
+      <ProfileBio>{profile.bio}</ProfileBio>
 
-      {/* <ProfileBio>{profile.bio}</ProfileBio>
-
-      <ProfileTrips>{totalTrips.length} trips </ProfileTrips> */}
+      {/* please uncomment this vvvv if you solve the promise issue */}
+      {/* <ProfileTrips>{totalTrips.length} trips </ProfileTrips> */}
     </Background>
   );
 };

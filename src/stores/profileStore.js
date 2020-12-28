@@ -2,13 +2,24 @@ import instance from "./instance";
 import { makeAutoObservable } from "mobx";
 
 class ProfileStore {
-  profiles = [];
+  profile = [];
 
   loading = true;
 
   constructor() {
     makeAutoObservable(this);
   }
+
+  //fetch profile
+  fetchProfile = async (userId) => {
+    try {
+      const response = await instance.get(`/profiles/${userId}`);
+      this.profile = response.data;
+      this.loading = false;
+    } catch (error) {
+      console.error("profileStore --> fetchProfile", error);
+    }
+  };
 
   // Edit Profile
   editProfile = async (updatedProfile) => {
