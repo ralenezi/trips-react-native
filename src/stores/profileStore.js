@@ -1,8 +1,7 @@
 import instance from "./instance";
 import { makeAutoObservable } from "mobx";
 
-class profileStore {
-
+class ProfileStore {
   profiles = [];
 
   loading = true;
@@ -29,6 +28,5 @@ class profileStore {
   };
 }
 
-const profileStore = new profileStore();
-profileStore.fetchTrips();
+const profileStore = new ProfileStore();
 export default profileStore;
