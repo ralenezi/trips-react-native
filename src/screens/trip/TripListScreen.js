@@ -15,9 +15,11 @@ import { Left } from "native-base";
 
 const TripListScreen = ({ navigation }) => {
   let screenItem = "";
+
+  //logout
   const logout = () => {
     authStore.signout;
-    console.log("logged out");
+
     navigation.replace("LoginScreen");
   };
   if (authStore.user) {

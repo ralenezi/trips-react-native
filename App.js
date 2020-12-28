@@ -7,12 +7,12 @@ import {
   LoginScreen,
   RegisterScreen,
   ForgotPasswordScreen,
-  Dashboard,
   AddTripScreen,
   TripListScreen,
   TripDetailScreen,
   EditTripScreen,
   ProfileScreen,
+  EditProfileScreen,
 } from "./src/screens";
 
 //navigation
@@ -24,8 +24,6 @@ import { Provider } from "react-native-paper";
 
 //theme
 import { theme } from "./src/core/theme";
-import authStore from "./src/stores/authStore";
-import TripList from "./src/components/trip/TripList";
 
 const Stack = createStackNavigator();
 
@@ -35,7 +33,6 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="StartScreen"
-          // initialRouteName={authStore.user ? 'TripListScreen' : 'LoginScreen'}
           screenOptions={{
             headerShown: false,
           }}
@@ -43,7 +40,7 @@ const App = () => {
           <Stack.Screen name="StartScreen" component={StartScreen} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-          {/* <Stack.Screen name="Dashboard" component={Dashboard} /> */}
+
           <Stack.Screen
             name="ForgotPasswordScreen"
             component={ForgotPasswordScreen}
@@ -53,6 +50,10 @@ const App = () => {
           <Stack.Screen name="AddTripScreen" component={AddTripScreen} />
           <Stack.Screen name="EditTripScreen" component={EditTripScreen} />
           <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+          <Stack.Screen
+            name="EditProfileScreen"
+            component={EditProfileScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
