@@ -2,49 +2,33 @@ import instance from "./instance";
 import { makeAutoObservable } from "mobx";
 
 class profileStore {
-  profiles = {
-    image:
-      "https://www.goway.com/media/cache/aa/79/aa79264f49aae4d4b2d77f0abdeb16fc.jpg",
-    bio: "hello its me",
-    userId: "1",
-  };
+
+  profiles = [];
+
   loading = true;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  //fetch
-  fetchTrips = async () => {
-    try {
-      const response = await instance.get("/trips");
-      this.trips = response.data;
-      console.log(
-        "🚀 ~ file: tripStore.js ~ line 16 ~ profileStore ~ fetchTrips= ~ this.trips",
-        this.trips
-      );
-      this.loading = false;
-    } catch (error) {
-      console.error("tripStore --> fetchTrips", error);
-    }
-  }; //end fetch
-
-  //edit trip
-  editTrip = async (updatedTrip) => {
+  // Edit Profile
+  editProfile = async (updatedProfile) => {
     try {
       const response = await instance.put(
-        `/trips/${updatedTrip.id}`,
-        updatedTrip
+        `/profiles/${updatedProfile.id}`,
+        updatedProfile
       );
 
-      const trip = this.trips.find((trip) => trip.id === updatedTrip.id);
-      for (const key in trip) trip[key] = updatedTrip[key];
+      const profile = this.profiles.find(
+        (profile) => profile.id === updatedProfile.id
+      );
+      for (const key in profile) profile[key] = updatedProfile[key];
     } catch (error) {
-      console.error("tripStore --> editTrip", error);
+      console.error("profileStore --> editProfile", error);
     }
-  }; //end edit trip
-} //end class
+  };
+}
 
-const tripStore = new profileStore();
-tripStore.fetchTrips();
-export default tripStore;
+const profileStore = new profileStore();
+profileStore.fetchTrips();
+export default profileStore;

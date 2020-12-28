@@ -1,49 +1,44 @@
-import React from 'react'
-import { SafeAreaView, ScrollView, Text, View } from 'react-native'
-
-
-//native base
-import { Spinner } from "native-base";
-
+import React from "react";
+import { SafeAreaView, ScrollView } from "react-native";
 
 //styles
-import { Title } from '../../components/trip/styles'
+import { Title } from "../../components/trip/styles";
 
 //trip component
-import Button from '../../components/Button'
-import TripList from '../../components/trip/TripList'
-import Background from '../../components/Background'
+import Button from "../../components/Button";
+import TripList from "../../components/trip/TripList";
+import Background from "../../components/Background";
 //stores
-import authStore from '../../stores/authStore'
-import { observer } from 'mobx-react'
-import { Left, Right } from 'native-base'
+import authStore from "../../stores/authStore";
+import { observer } from "mobx-react";
+import { Left } from "native-base";
 
 const TripListScreen = ({ navigation }) => {
-  let screenItem = ''
+  let screenItem = "";
   const logout = () => {
-    authStore.signout
-    console.log('logged out')
-    navigation.replace('LoginScreen')
-  }
+    authStore.signout;
+    console.log("logged out");
+    navigation.replace("LoginScreen");
+  };
   if (authStore.user) {
     screenItem = (
       <>
         <Left style={{ padding: 8 }}>
           <Title>Hello, {authStore.user.username}</Title>
         </Left>
-        <Button onPress={() => navigation.navigate('AddTripScreen')}>
+        <Button onPress={() => navigation.navigate("AddTripScreen")}>
           add new trip
         </Button>
         {/* logout */}
         <Button onPress={logout}>logout</Button>
       </>
-    )
+    );
   } else
     screenItem = (
-      <Button onPress={() => navigation.navigate('LoginScreen')}>
+      <Button onPress={() => navigation.navigate("LoginScreen")}>
         Log in to add trips
       </Button>
-    )
+    );
 
   return (
     <SafeAreaView>
@@ -52,8 +47,7 @@ const TripListScreen = ({ navigation }) => {
         <TripList navigation={navigation} />
       </ScrollView>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-
-export default observer(TripListScreen)
+export default observer(TripListScreen);
