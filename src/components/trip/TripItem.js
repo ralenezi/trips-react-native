@@ -32,7 +32,7 @@ const TripItem = ({ trip, navigation }) => {
   } else screenItem = ''
   const handlePress = () => {
     profileStore.fetchProfile(trip.userId)
-    navigation.navigate('ProfileScreen')
+    navigation.navigate('ProfileScreen', { userId: trip.userId })
   }
   return (
     <Card>
