@@ -7,7 +7,7 @@ import { Title } from "../../components/trip/styles";
 //trip component
 import Button from "../../components/Button";
 import TripList from "../../components/trip/TripList";
-import Background from "../../components/Background";
+
 //stores
 import authStore from "../../stores/authStore";
 import { observer } from "mobx-react";

@@ -12,6 +12,10 @@ import tripStore from "../../stores/tripStore";
 import authStore from "../../stores/authStore";
 import { TouchableOpacity } from "react-native";
 
+//bak
+import Background from "../Background";
+import { back } from "react-native/Libraries/Animated/src/Easing";
+
 const TripItem = ({ trip, navigation }) => {
   let screenItem = "";
   if (authStore.user) {
@@ -41,6 +45,7 @@ const TripItem = ({ trip, navigation }) => {
         <Title>{trip.title}</Title>
         <Title
           onPress={() => navigation.navigate("ProfileScreen", trip.userId)}
+          style={styles.boldfont}
         >
           By: {trip.user.username}
         </Title>
@@ -55,5 +60,8 @@ export default observer(TripItem);
 const styles = StyleSheet.create({
   surface: {
     padding: 8,
+  },
+  boldfont: {
+    fontWeight: "bold",
   },
 });

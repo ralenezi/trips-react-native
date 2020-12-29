@@ -1,10 +1,11 @@
 //native base
-import { Spinner } from "native-base";
+import { Spinner, View } from "native-base";
 
 import React from "react";
 
 //Components
 import TripItem from "./TripItem";
+
 // mobx
 import { observer } from "mobx-react";
 //stores
