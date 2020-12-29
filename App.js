@@ -25,6 +25,8 @@ import { Provider } from "react-native-paper";
 //theme
 import { theme } from "./src/core/theme";
 
+// move your navigators to a separate component.
+
 const Stack = createStackNavigator();
 
 const App = () => {
