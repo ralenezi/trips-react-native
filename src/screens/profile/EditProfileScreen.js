@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { TextInput } from "react-native";
 
 //native base
-import { Spinner } from "native-base";
 import { Title } from "react-native-paper";
 
 // mobx
@@ -9,14 +9,11 @@ import { observer } from "mobx-react";
 
 //stores
 import profileStore from "../../stores/profileStore";
-import authStore from "../../stores/authStore";
 
 //components
 import Background from "../../components/Background";
 import BackButton from "../../components/BackButton";
-
-//styles
-import { ProfileImage, ProfileBio, ProfileTrips } from "./styles";
+import Button from "../../components/Button";
 
 const EditProfileScreen = ({ route, navigation }) => {
   const { profile } = route.params;
@@ -38,14 +35,12 @@ const EditProfileScreen = ({ route, navigation }) => {
       />
       <TextInput
         label="Bio"
-        value={profileEdit.description}
+        value={profileEdit.bio}
         onChangeText={(bio) => setProfile({ ...profileEdit, bio })}
       />
-      <Button mode="contained" onPress={handleEdit}>
-        Edit
-      </Button>
+      <Button onPress={handleEdit}>Edit</Button>
     </Background>
   );
 };
 
-export default EditProfileScreen;
+export default observer(EditProfileScreen);

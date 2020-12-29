@@ -25,7 +25,7 @@ const TripItem = ({ trip, navigation }) => {
               navigation.navigate("EditTripScreen", { trip: trip })
             }
           >
-            edit
+            Edit
           </Title>
         </>
       );
