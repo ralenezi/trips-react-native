@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 
-import { Avatar } from "react-native-paper";
-import BackButton from "../../components/BackButton";
-import Background from "../../components/BackgroundSignIn";
-import Button from "../../components/Button";
-import Header from "../../components/Header";
-import Logo from "../../components/Logo";
-import { Text } from "react-native-paper";
-import TextInput from "../../components/TextInput";
-import authStore from "../../stores/authStore";
-import { usernameValidator } from "../../helpers/usernameValidator";
-import { observer } from "mobx-react";
-import { passwordValidator } from "../../helpers/passwordValidator";
-import { theme } from "../../core/theme";
+
+import { Avatar } from 'react-native-paper'
+import BackButton from '../../components/BackButton'
+import Background from '../../components/Background'
+import Button from '../../components/Button'
+import Header from '../../components/Header'
+import { Text } from 'react-native-paper'
+import TextInput from '../../components/TextInput'
+import authStore from '../../stores/authStore'
+import { usernameValidator } from '../../helpers/usernameValidator'
+import { observer } from 'mobx-react'
+import { passwordValidator } from '../../helpers/passwordValidator'
+import { theme } from '../../core/theme'
+
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState({ value: "", error: "" });
@@ -31,21 +32,17 @@ const LoginScreen = ({ navigation }) => {
     const user = {
       username: username.value,
       password: password.value,
-    };
-    await authStore.signin(user);
-    if (authStore.user) navigation.navigate("TripListScreen");
+    }
+    await authStore.signin(user)
+    if (authStore.user) navigation.navigate('TripListScreen')
+  }
 
-    // navigation.reset({
-    //   index: 0,
-    //   routes: [{ name: "Dashboard" }],
-    // });
-  };
 
   return (
     <Background>
       <BackButton goBack={navigation.goBack} />
-      {/* <Logo /> */}
-      <Avatar.Icon size={124} icon="account-circle-outline" />
+      <Avatar.Icon size={124} icon='account-circle-outline' />
+
       <Header>Welcome back.</Header>
       <TextInput
         label="Username"

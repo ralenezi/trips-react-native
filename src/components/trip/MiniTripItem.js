@@ -1,33 +1,24 @@
 //react-native
-import { Card, Title, Surface } from 'react-native-paper'
+import { Surface } from 'react-native-paper'
 import { StyleSheet } from 'react-native'
 import { Avatar } from 'react-native-paper'
-
 //react
-
 import React from 'react'
-
 //observer
 import { observer } from 'mobx-react'
-import tripStore from '../../stores/tripStore'
-import authStore from '../../stores/authStore'
 import { TouchableOpacity } from 'react-native'
-import profileStore from '../../stores/profileStore'
+import { ListItem } from 'native-base'
 
 const MiniTripItem = ({ trip, navigation }) => {
-  const handlePress = () => {
-    profileStore.fetchProfile(trip.userId)
-    navigation.navigate('ProfileScreen', { userId: trip.userId })
-  }
   return (
-    <>
+    <ListItem>
       <Surface style={styles.surface}>
         <TouchableOpacity
           onPress={() => navigation.navigate('TripDetail', { trip: trip })}>
           <Avatar.Image size={124} source={{ uri: trip.image }} />
         </TouchableOpacity>
       </Surface>
-    </>
+    </ListItem>
   )
 }
 
