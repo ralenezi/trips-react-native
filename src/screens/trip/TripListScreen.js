@@ -14,13 +14,18 @@ import TripList from "../../components/trip/TripList";
 import authStore from '../../stores/authStore'
 import { observer } from 'mobx-react'
 import { Left } from 'native-base'
+import profileStore from '../../stores/profileStore'
 
 const TripListScreen = ({ navigation }) => {
+  const handlePress = () => {
+    profileStore.fetchProfile(authStore.user.id)
+    navigation.navigate('ProfileScreen')
+  }
   let screenItem = ''
 
   //logout
   const logout = () => {
-    authStore.signout
+    authStore.signout()
 
     navigation.replace('LoginScreen')
   }
@@ -33,9 +38,7 @@ const TripListScreen = ({ navigation }) => {
         <Button onPress={() => navigation.navigate('AddTripScreen')}>
           add new trip
         </Button>
-        <Button onPress={() => navigation.navigate('ProfileScreen')}>
-          go to profile
-        </Button>
+        <Button onPress={handlePress}>go to profile</Button>
         {/* logout */}
         <Button onPress={logout}>logout</Button>
       </>

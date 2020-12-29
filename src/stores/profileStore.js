@@ -3,8 +3,7 @@ import { makeAutoObservable } from 'mobx'
 import authStore from '../stores/authStore'
 
 class ProfileStore {
-  profile = []
-
+  profile = null
   loading = true
 
   constructor() {
@@ -17,6 +16,7 @@ class ProfileStore {
       const response = await instance.get(`/profiles/${userId}`)
       this.profile = response.data
       this.loading = false
+      console.log('profile ', this.profile)
     } catch (error) {
       console.error('profileStore --> fetchProfile', error)
     }
@@ -41,5 +41,5 @@ class ProfileStore {
 }
 
 const profileStore = new ProfileStore()
-profileStore.fetchProfile(authStore.user.id)
+// profileStore.fetchProfile(authStore.user.id)
 export default profileStore
