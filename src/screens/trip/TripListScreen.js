@@ -19,7 +19,7 @@ import profileStore from '../../stores/profileStore'
 const TripListScreen = ({ navigation }) => {
   const handlePress = () => {
     profileStore.fetchProfile(authStore.user.id)
-    navigation.navigate('ProfileScreen')
+    navigation.navigate('ProfileScreen', { userId: authStore.user.id })
   }
   let screenItem = ''
 
