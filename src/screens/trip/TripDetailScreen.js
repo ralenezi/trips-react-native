@@ -17,7 +17,6 @@ import BackButton from "../../components/BackButton";
 import {
   TripDetailTitle,
   TripDetailImage,
-  TripDetailWrapper,
   TripDetailDescription,
 } from "./styles";
 
@@ -29,10 +28,10 @@ const TripDetailScreen = ({ route, navigation }) => {
   return (
     <Background>
       <BackButton goBack={navigation.goBack} />
-      <TripDetailTitle>{trip.title}</TripDetailTitle>
+
       <TripDetailImage source={{ uri: trip.image }} />
+      <TripDetailTitle>{trip.title}</TripDetailTitle>
       <TripDetailDescription>{trip.description}</TripDetailDescription>
-      {/* </TripDetailWrapper> */}
     </Background>
   );
 };
