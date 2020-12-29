@@ -6,7 +6,6 @@ import BackButton from '../../components/BackButton'
 import Background from '../../components/Background'
 import Button from '../../components/Button'
 import Header from '../../components/Header'
-import Logo from '../../components/Logo'
 import { Text } from 'react-native-paper'
 import TextInput from '../../components/TextInput'
 import authStore from '../../stores/authStore'
@@ -34,17 +33,12 @@ const LoginScreen = ({ navigation }) => {
     }
     await authStore.signin(user)
     if (authStore.user) navigation.navigate('TripListScreen')
-
-    // navigation.reset({
-    //   index: 0,
-    //   routes: [{ name: "Dashboard" }],
-    // });
   }
 
   return (
     <Background>
       <BackButton goBack={navigation.goBack} />
-      {/* <Logo /> */}
+
       <Avatar.Icon size={124} icon='account-circle-outline' />
       <Header>Welcome back.</Header>
       <TextInput

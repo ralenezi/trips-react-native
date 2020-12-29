@@ -1,26 +1,20 @@
 import React from 'react'
 import { SafeAreaView, ScrollView } from 'react-native'
-
-//styles
 import { Title } from '../../components/trip/styles'
-
 //trip component
 import Button from '../../components/Button'
 import TripList from '../../components/trip/TripList'
-import Background from '../../components/Background'
 //stores
 import authStore from '../../stores/authStore'
 import { observer } from 'mobx-react'
 import { Left } from 'native-base'
 import profileStore from '../../stores/profileStore'
-
 const TripListScreen = ({ navigation }) => {
   const handlePress = () => {
     profileStore.fetchProfile(authStore.user.id)
     navigation.navigate('ProfileScreen', { userId: authStore.user.id })
   }
   let screenItem = ''
-
   //logout
   const logout = () => {
     authStore.signout()
@@ -37,7 +31,6 @@ const TripListScreen = ({ navigation }) => {
           add new trip
         </Button>
         <Button onPress={handlePress}>go to profile</Button>
-        {/* logout */}
         <Button onPress={logout}>logout</Button>
       </>
     )

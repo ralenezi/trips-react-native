@@ -1,19 +1,16 @@
 import React from 'react'
-import { Title } from 'react-native-paper'
+import { Title, Surface } from 'react-native-paper'
 import { observer } from 'mobx-react'
 //stores
 import profileStore from '../../stores/profileStore'
-import authStore from '../../stores/authStore'
 //components
-import Background from '../../components/Background'
 import BackButton from '../../components/BackButton'
 
 //styles
 import { ProfileImage, ProfileBio, ProfileTrips } from './styles'
 import { Spinner } from 'native-base'
-import { ScrollView, Text, TouchableOpacity } from 'react-native'
+import { SafeAreaView, ScrollView, StyleSheet } from 'react-native'
 import tripStore from '../../stores/tripStore'
-import TripItem from '../../components/trip/TripItem'
 import MiniTripItem from '../../components/trip/MiniTripItem'
 
 const ProfileScreen = ({ route, navigation }) => {
@@ -23,15 +20,6 @@ const ProfileScreen = ({ route, navigation }) => {
     return <Spinner />
   }
   const profile = profileStore.profile
-  // authStore.user?.profileId === profile.id && (
-  //   <TouchableOpacity
-  //     onPress={
-  //       (() => navigation.navigate('EditProfileScreen'), { profile: profile })
-  //     }>
-  //     <Title>edit</Title>
-  //   </TouchableOpacity>
-  // )
-  //number of trips >> Comment out la2ana promise uncomment if you solve the issue
   const totalTrips = tripStore.trips.filter((trip) => trip.userId === userId)
   console.log(
     '🚀 ~ file: ProfileScreen.js ~ line 34 ~ ProfileScreen ~ totalTrips',
@@ -44,23 +32,27 @@ const ProfileScreen = ({ route, navigation }) => {
     ))
 
   return (
-    <Background>
-      <BackButton goBack={navigation.goBack} />
-      <Title>Profile</Title>
-      {/* <Text>{totalTrips}</Text> */}
+    <SafeAreaView>
+      <Surface style={styles.surface}>
+        <BackButton goBack={navigation.goBack} />
+        <Title>Profile</Title>
 
-      <ProfileImage
-        source={{ uri: profile.image }}
-        style={{ borderRadius: '100%' }}
-      />
-      <ProfileBio>{profile.bio}</ProfileBio>
-
-      {/* please uncomment this vvvv if you solve the promise issue */}
-      <ProfileTrips>{totalTrips.length} trips </ProfileTrips>
-      {/* <ScrollView horizontal={true}>{tripsList}</ScrollView> */}
-      {tripsList}
-    </Background>
+        <ProfileImage
+          source={{ uri: profile.image }}
+          style={{ borderRadius: '100%' }}
+        />
+        <ProfileBio>{profile.bio}</ProfileBio>
+        <ProfileTrips>{totalTrips.length} trips </ProfileTrips>
+        <ScrollView horizontal={true}>{tripsList}</ScrollView>
+      </Surface>
+    </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  surface: {
+    padding: 70,
+  },
+})
 
 export default observer(ProfileScreen)

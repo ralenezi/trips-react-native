@@ -6,7 +6,6 @@ import BackButton from '../../components/BackButton'
 import Background from '../../components/Background'
 import Button from '../../components/Button'
 import Header from '../../components/Header'
-import Logo from '../../components/Logo'
 import { Text } from 'react-native-paper'
 import TextInput from '../../components/TextInput'
 import authStore from '../../stores/authStore'
@@ -39,11 +38,6 @@ const RegisterScreen = ({ navigation }) => {
     }
     await authStore.signup(user)
     if (authStore.user) navigation.navigate('TripListScreen')
-
-    //   navigation.reset({
-    //     index: 0,
-    //     routes: [{ user: "Dashboard" }],
-    //   });
   }
 
   return (
