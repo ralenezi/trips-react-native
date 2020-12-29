@@ -1,25 +1,26 @@
-import instance from "./instance";
-import { makeAutoObservable } from "mobx";
+import instance from './instance'
+import { makeAutoObservable } from 'mobx'
+import authStore from '../stores/authStore'
 
 class ProfileStore {
-  profile = [];
+  profile = []
 
-  loading = true;
+  loading = true
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this)
   }
 
   //fetch profile
   fetchProfile = async (userId) => {
     try {
-      const response = await instance.get(`/profiles/${userId}`);
-      this.profile = response.data;
-      this.loading = false;
+      const response = await instance.get(`/profiles/${userId}`)
+      this.profile = response.data
+      this.loading = false
     } catch (error) {
-      console.error("profileStore --> fetchProfile", error);
+      console.error('profileStore --> fetchProfile', error)
     }
-  };
+  }
 
   // Edit Profile
   editProfile = async (updatedProfile) => {
@@ -27,17 +28,18 @@ class ProfileStore {
       const response = await instance.put(
         `/profiles/${updatedProfile.id}`,
         updatedProfile
-      );
+      )
 
       const profile = this.profiles.find(
         (profile) => profile.id === updatedProfile.id
-      );
-      for (const key in profile) profile[key] = updatedProfile[key];
+      )
+      for (const key in profile) profile[key] = updatedProfile[key]
     } catch (error) {
-      console.error("profileStore --> editProfile", error);
+      console.error('profileStore --> editProfile', error)
     }
-  };
+  }
 }
 
-const profileStore = new ProfileStore();
-export default profileStore;
+const profileStore = new ProfileStore()
+profileStore.fetchProfile(authStore.user.id)
+export default profileStore
