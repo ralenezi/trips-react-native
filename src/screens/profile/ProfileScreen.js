@@ -4,49 +4,59 @@ import { observer } from "mobx-react";
 //stores
 import profileStore from "../../stores/profileStore";
 import authStore from "../../stores/authStore";
+// import tripStore from "../../stores/tripStore";
 //components
-import Background from "../../components/Background";
+
 import BackButton from "../../components/BackButton";
 
 //styles
 import { ProfileImage, ProfileBio, ProfileTrips } from "./styles";
-import { Spinner } from "native-base";
+import { Spinner, View } from "native-base";
+import UserTripList from "../../components/trip/UserTripList";
 
 const ProfileScreen = ({ route, navigation }) => {
-  // const { userId } = route.params
   if (!profileStore.profile) {
     return <Spinner />;
   }
   const profile = profileStore.profile;
 
   //number of trips >> Comment out la2ana promise uncomment if you solve the issue
-  //   const totalTrips = tripStore.trips.filter(
-  //     (trip) => trip.userId === userId
-  //   );
+  // const totalTrips = tripStore.trips.filter((trip) => trip.userId === userId);
+
   return (
-    <Background>
+    <>
       <BackButton goBack={navigation.goBack} />
-      <Title>Profile</Title>
-      {authStore.user?.profileId === profile.id && (
-        <Title
-          onPress={
-            (() => navigation.navigate("EditProfileScreen"),
-            { profile: profile })
-          }
-        >
-          edit
-        </Title>
-      )}
 
-      <ProfileImage
-        source={{ uri: profile.image }}
-        style={{ borderRadius: "100%" }}
-      />
-      <ProfileBio>{profile.bio}</ProfileBio>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "column",
+          marginTop: "20%",
+          marginLeft: "10%",
+        }}
+      >
+        {authStore.user?.profileId === profile.id && (
+          <Title
+            onPress={
+              (() => navigation.navigate("EditProfileScreen"),
+              { profile: profile })
+            }
+          >
+            edit
+          </Title>
+        )}
 
-      {/* please uncomment this vvvv if you solve the promise issue */}
-      {/* <ProfileTrips>{totalTrips.length} trips </ProfileTrips> */}
-    </Background>
+        <ProfileImage
+          source={{ uri: profile.image }}
+          style={{ borderRadius: "100%" }}
+        />
+        <ProfileBio>{profile.bio}</ProfileBio>
+
+        {/* <UserTripList userId={authStore.user.id} /> */}
+        {/* please uncomment this vvvv if you solve the promise issue */}
+        {/* <ProfileTrips>{totalTrips.length} trips </ProfileTrips> */}
+      </View>
+    </>
   );
 };
 
