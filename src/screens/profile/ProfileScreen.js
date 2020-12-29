@@ -46,12 +46,11 @@ const ProfileScreen = ({ route, navigation }) => {
 
       {authStore.user?.profileId === profile.id && (
         <Title
-          onPress={
-            (() => navigation.navigate("EditProfileScreen"),
-            { profile: profile })
+          onPress={() =>
+            navigation.navigate("EditProfileScreen", { profile: profile })
           }
         >
-          edit
+          Edit
         </Title>
       )}
 
