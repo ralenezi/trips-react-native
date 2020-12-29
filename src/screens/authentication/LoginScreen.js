@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import React, { useState } from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+
 
 import { Avatar } from 'react-native-paper'
 import BackButton from '../../components/BackButton'
@@ -14,17 +15,18 @@ import { observer } from 'mobx-react'
 import { passwordValidator } from '../../helpers/passwordValidator'
 import { theme } from '../../core/theme'
 
+
 const LoginScreen = ({ navigation }) => {
-  const [username, setUsername] = useState({ value: '', error: '' })
-  const [password, setPassword] = useState({ value: '', error: '' })
+  const [username, setUsername] = useState({ value: "", error: "" });
+  const [password, setPassword] = useState({ value: "", error: "" });
 
   const onLoginPressed = async () => {
-    const usernameError = usernameValidator(username.value)
-    const passwordError = passwordValidator(password.value)
+    const usernameError = usernameValidator(username.value);
+    const passwordError = passwordValidator(password.value);
     if (usernameError || passwordError) {
-      setUsername({ ...username, error: usernameError })
-      setPassword({ ...password, error: passwordError })
-      return
+      setUsername({ ...username, error: usernameError });
+      setPassword({ ...password, error: passwordError });
+      return;
     }
 
     const user = {
@@ -35,58 +37,60 @@ const LoginScreen = ({ navigation }) => {
     if (authStore.user) navigation.navigate('TripListScreen')
   }
 
+
   return (
     <Background>
       <BackButton goBack={navigation.goBack} />
-
       <Avatar.Icon size={124} icon='account-circle-outline' />
+
       <Header>Welcome back.</Header>
       <TextInput
-        label='Username'
-        returnKeyType='next'
+        label="Username"
+        returnKeyType="next"
         value={username.value}
-        onChangeText={(text) => setUsername({ value: text, error: '' })}
+        onChangeText={(text) => setUsername({ value: text, error: "" })}
         error={!!username.error}
         errorText={username.error}
-        autoCapitalize='none'
-        autoCompleteType='username'
+        autoCapitalize="none"
+        autoCompleteType="username"
       />
       <TextInput
-        label='Password'
-        returnKeyType='done'
+        label="Password"
+        returnKeyType="done"
         value={password.value}
-        onChangeText={(text) => setPassword({ value: text, error: '' })}
+        onChangeText={(text) => setPassword({ value: text, error: "" })}
         error={!!password.error}
         errorText={password.error}
         secureTextEntry
       />
       <View style={styles.forgotPassword}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('ForgotPasswordScreen')}>
+          onPress={() => navigation.navigate("ForgotPasswordScreen")}
+        >
           <Text style={styles.forgot}>Forgot your password?</Text>
         </TouchableOpacity>
       </View>
-      <Button mode='contained' onPress={onLoginPressed}>
+      <Button mode="contained" onPress={onLoginPressed}>
         Login
       </Button>
       <View style={styles.row}>
         <Text>Don’t have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.replace('RegisterScreen')}>
+        <TouchableOpacity onPress={() => navigation.replace("RegisterScreen")}>
           <Text style={styles.link}>Sign up</Text>
         </TouchableOpacity>
       </View>
     </Background>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   forgotPassword: {
-    width: '100%',
-    alignItems: 'flex-end',
+    width: "100%",
+    alignItems: "flex-end",
     marginBottom: 24,
   },
   row: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: 4,
   },
   forgot: {
@@ -94,9 +98,9 @@ const styles = StyleSheet.create({
     color: theme.colors.secondary,
   },
   link: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: theme.colors.primary,
   },
-})
+});
 
-export default observer(LoginScreen)
+export default observer(LoginScreen);

@@ -13,30 +13,39 @@ import { SafeAreaView, ScrollView, StyleSheet } from 'react-native'
 import tripStore from '../../stores/tripStore'
 import MiniTripItem from '../../components/trip/MiniTripItem'
 
+
 const ProfileScreen = ({ route, navigation }) => {
-  const { userId } = route.params
-  console.log('user id', userId)
+  const { userId } = route.params;
+  console.log("user id", userId);
   if (!profileStore.profile) {
-    return <Spinner />
+    return <Spinner />;
   }
   const profile = profileStore.profile
   const totalTrips = tripStore.trips.filter((trip) => trip.userId === userId)
   console.log(
-    '🚀 ~ file: ProfileScreen.js ~ line 34 ~ ProfileScreen ~ totalTrips',
+    "🚀 ~ file: ProfileScreen.js ~ line 34 ~ ProfileScreen ~ totalTrips",
     totalTrips
-  )
+  );
   const tripsList = tripStore.trips
     .filter((trip) => trip.userId === userId)
     .map((trip) => (
       <MiniTripItem trip={trip} key={trip.id} navigation={navigation} />
-    ))
+    ));
 
   return (
     <SafeAreaView>
       <Surface style={styles.surface}>
         <BackButton goBack={navigation.goBack} />
         <Title>Profile</Title>
-
+   {authStore.user?.profileId === profile.id && (
+        <Title
+          onPress={() =>
+            navigation.navigate("EditProfileScreen", { profile: profile })
+          }
+        >
+          Edit
+        </Title>
+      )}
         <ProfileImage
           source={{ uri: profile.image }}
           style={{ borderRadius: '100%' }}
@@ -56,3 +65,4 @@ const styles = StyleSheet.create({
 })
 
 export default observer(ProfileScreen)
+
